@@ -2388,386 +2388,284 @@ Explore WAQF
 
 
 
-<!-- STAKING -->
-
-<div class="card">
-
-<div class="card-icon">
-
-🔒
-
-</div>
-
-
-<h3>
-
-WAQF Staking
-
-</h3>
-
-
-<p>
-
-Stake WAQF tokens and
-participate in available
-staking opportunities
-and rewards.
-
-</p>
-
-
-<a
-href="#staking"
-class="button">
-
-🚀 Stake WAQF Now
-
-</a>
-
-</div>
-
-
-
-<!-- MARKETPLACE -->
-
-<div class="card">
-
-<div class="card-icon">
-
-🛍️
-
-</div>
-
-
-<h3>
-
-WAQF Marketplace
-
-</h3>
-
-
-<p>
-
-Discover products and services
-available through the WAQF
-marketplace.
-
-</p>
-
-
-<a
-href="https://waqf.onpay.my"
-class="button"
-target="_blank">
-
-Open Marketplace
-
-</a>
-
-</div>
-
-
-
-<!-- COMMUNITY -->
-
-<div class="card">
-
-<div class="card-icon">
-
-📢
-
-</div>
-
-
-<h3>
-
-Community
-
-</h3>
-
-
-<p>
-
-Stay connected with WAQF
-for updates, announcements
-and ecosystem developments.
-
-</p>
-
-
-<a
-href="#community"
-class="button secondary">
-
-Join WAQF
-
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
 <!-- =====================================================
-     UTILITY
+     WAQF STAKING V3.2
 ===================================================== -->
 
-<section>
+<div class="card" id="waqf-staking">
 
-<div class="container">
+    <div class="card-icon">
+        🔐
+    </div>
 
-<div class="section-title">
+    <h3>
+        WAQF Staking
+    </h3>
 
-<h2>
+    <p>
+        Stake WAQF directly through the World Mini App.
+        Choose Flexible or Locked staking.
+    </p>
 
-💎 WAQF Utility
+    <!-- STAKING OPTIONS -->
 
-</h2>
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+        margin:20px 0;
+    ">
 
-<p>
+        <div style="
+            padding:16px;
+            border:1px solid rgba(53,232,121,.35);
+            border-radius:14px;
+            text-align:center;
+        ">
 
-Ways to participate in the WAQF ecosystem.
+            <div style="
+                font-size:13px;
+                opacity:.75;
+            ">
+                FLEXIBLE
+            </div>
 
-</p>
+            <div style="
+                font-size:26px;
+                font-weight:700;
+                margin:5px 0;
+            ">
+                50%
+            </div>
+
+            <div style="
+                font-size:12px;
+                color:#35e879;
+            ">
+                APY · NO LOCK
+            </div>
+
+        </div>
+
+
+        <div style="
+            padding:16px;
+            border:1px solid rgba(255,200,60,.35);
+            border-radius:14px;
+            text-align:center;
+        ">
+
+            <div style="
+                font-size:13px;
+                opacity:.75;
+            ">
+                LOCKED
+            </div>
+
+            <div style="
+                font-size:26px;
+                font-weight:700;
+                margin:5px 0;
+            ">
+                70%
+            </div>
+
+            <div style="
+                font-size:12px;
+            ">
+                APY · 60 DAYS
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- AMOUNT -->
+
+    <div style="margin:20px 0;">
+
+        <label style="
+            display:block;
+            margin-bottom:8px;
+            font-size:13px;
+        ">
+            WAQF Amount
+        </label>
+
+        <input
+            id="waqfStakeAmount"
+            type="number"
+            min="0"
+            step="0.000001"
+            placeholder="Enter WAQF amount"
+            style="
+                width:100%;
+                box-sizing:border-box;
+                padding:14px;
+                border-radius:12px;
+                border:1px solid rgba(255,255,255,.15);
+                background:rgba(255,255,255,.05);
+                color:inherit;
+                font-size:16px;
+            "
+        >
+
+    </div>
+
+
+    <!-- STAKE BUTTONS -->
+
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+    ">
+
+        <button
+            id="stakeFlexibleBtn"
+            class="button gold"
+            type="button"
+            onclick="waqfStakeFlexible()"
+        >
+            STAKE FLEXIBLE
+        </button>
+
+
+        <button
+            id="stakeLockedBtn"
+            class="button"
+            type="button"
+            onclick="waqfStakeLocked()"
+        >
+            STAKE LOCKED
+        </button>
+
+    </div>
+
+
+    <!-- USER STAKING -->
+
+    <div style="
+        margin-top:24px;
+        padding-top:20px;
+        border-top:1px solid rgba(255,255,255,.10);
+    ">
+
+        <h3 style="
+            margin-bottom:15px;
+        ">
+            My WAQF Staking
+        </h3>
+
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:10px;
+        ">
+
+            <div style="
+                padding:12px;
+                border-radius:12px;
+                background:rgba(255,255,255,.04);
+            ">
+                <div style="font-size:12px;opacity:.65;">
+                    Total Staked
+                </div>
+
+                <strong id="waqfTotalStaked">
+                    0 WAQF
+                </strong>
+            </div>
+
+
+            <div style="
+                padding:12px;
+                border-radius:12px;
+                background:rgba(255,255,255,.04);
+            ">
+                <div style="font-size:12px;opacity:.65;">
+                    Pending Reward
+                </div>
+
+                <strong id="waqfPendingReward">
+                    0 WAQF
+                </strong>
+            </div>
+
+
+            <div style="
+                padding:12px;
+                border-radius:12px;
+                background:rgba(255,255,255,.04);
+            ">
+                <div style="font-size:12px;opacity:.65;">
+                    Flexible
+                </div>
+
+                <strong id="waqfFlexibleStaked">
+                    0 WAQF
+                </strong>
+            </div>
+
+
+            <div style="
+                padding:12px;
+                border-radius:12px;
+                background:rgba(255,255,255,.04);
+            ">
+                <div style="font-size:12px;opacity:.65;">
+                    Locked
+                </div>
+
+                <strong id="waqfLockedStaked">
+                    0 WAQF
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STAKE LIST -->
+
+    <div style="margin-top:22px;">
+
+        <h4>
+            My Stakes
+        </h4>
+
+        <div id="waqfStakeList">
+
+            <div style="
+                padding:14px;
+                opacity:.65;
+                text-align:center;
+            ">
+                Connect your World wallet to view your stakes.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div
+        id="waqfStakingStatus"
+        style="
+            margin-top:15px;
+            padding:12px;
+            border-radius:10px;
+            display:none;
+            font-size:13px;
+        "
+    ></div>
 
 </div>
-
-
-<div class="utility-grid">
-
-
-<div class="utility">
-
-<div class="utility-icon">
-🪙
-</div>
-
-<h3>
-HOLD
-</h3>
-
-<p>
-
-Hold WAQF as part
-of the ecosystem.
-
-</p>
-
-</div>
-
-
-<div class="utility">
-
-<div class="utility-icon">
-🔒
-</div>
-
-<h3>
-STAKE
-</h3>
-
-<p>
-
-Participate in available
-staking opportunities.
-
-</p>
-
-</div>
-
-
-<div class="utility">
-
-<div class="utility-icon">
-🛍️
-</div>
-
-<h3>
-USE
-</h3>
-
-<p>
-
-Explore products and
-services through WAQF Marketplace.
-
-</p>
-
-</div>
-
-
-<div class="utility">
-
-<div class="utility-icon">
-🤝
-</div>
-
-<h3>
-PARTICIPATE
-</h3>
-
-<p>
-
-Join community initiatives
-and ecosystem development.
-
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     STAKING
-===================================================== -->
-
-<section id="staking">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-
-🔒 WAQF Staking
-
-</h2>
-
-<p>
-
-Stake WAQF tokens and participate
-in the WAQF ecosystem.
-
-</p>
-
-</div>
-
-
-<div class="staking-box">
-
-
-<div>
-
-<img
-src="waqf-logo.png.PNG"
-class="staking-logo"
-alt="WAQF Coin">
-
-</div>
-
-
-<div class="staking-content">
-
-
-<h2>
-
-🚀 Start Staking WAQF
-
-</h2>
-
-
-<p>
-
-Staking is available through
-Ani Wallet.
-
-</p>
-
-
-<p>
-
-Open the WAQF staking platform,
-search for WAQF and select
-the available staking pool.
-
-</p>
-
-
-<div class="hero-buttons">
-
-<a
-href="https://world.org/ecosystem/app_4593f73390a9843503ec096086b43612"
-class="button gold"
-target="_blank">
-
-🚀 Open WAQF Staking
-
-</a>
-
-</div>
-
-
-<h3 style="color:#35e879;">
-
-Current WAQF Staking Options
-
-</h3>
-
-
-<div class="pool-grid">
-
-
-<div class="pool">
-
-<strong>
-60.76%
-</strong>
-
-<span>
-60 Days Pool
-</span>
-
-</div>
-
-
-<div class="pool">
-
-<strong>
-83.91%
-</strong>
-
-<span>
-Flexible Pool
-</span>
-
-</div>
-
-
-<div class="pool">
-
-<strong>
-0.96%
-</strong>
-
-<span>
-Flexible Pool
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 
 
@@ -3987,7 +3885,1385 @@ window.addEventListener(
 
     }
 );
+/* =====================================================
+   WAQF STAKING V3.2 - WORLD MINI APP
+   World Chain | Chain ID 480
+   ===================================================== */
 
+const WAQF_STAKING_CONTRACT =
+    "0xdd16535A07388322e8A0394779aCDCA0255f1565";
+
+const WAQF_STAKING_ABI = [
+    {
+        name: "stakeFlexible",
+        type: "function",
+        stateMutability: "nonpayable",
+        inputs: [
+            { name: "amount", type: "uint256" }
+        ],
+        outputs: [
+            { name: "stakeId", type: "uint256" }
+        ]
+    },
+    {
+        name: "stakeLocked",
+        type: "function",
+        stateMutability: "nonpayable",
+        inputs: [
+            { name: "amount", type: "uint256" }
+        ],
+        outputs: [
+            { name: "stakeId", type: "uint256" }
+        ]
+    },
+    {
+        name: "claimReward",
+        type: "function",
+        stateMutability: "nonpayable",
+        inputs: [
+            { name: "stakeId", type: "uint256" }
+        ],
+        outputs: []
+    },
+    {
+        name: "withdraw",
+        type: "function",
+        stateMutability: "nonpayable",
+        inputs: [
+            { name: "stakeId", type: "uint256" }
+        ],
+        outputs: []
+    },
+    {
+        name: "stakeCount",
+        type: "function",
+        stateMutability: "view",
+        inputs: [
+            { name: "user", type: "address" }
+        ],
+        outputs: [
+            { name: "", type: "uint256" }
+        ]
+    },
+    {
+        name: "getStake",
+        type: "function",
+        stateMutability: "view",
+        inputs: [
+            { name: "user", type: "address" },
+            { name: "stakeId", type: "uint256" }
+        ],
+        outputs: [
+            {
+                name: "",
+                type: "tuple",
+                components: [
+                    { name: "amount", type: "uint256" },
+                    { name: "startTime", type: "uint256" },
+                    { name: "lastClaimTime", type: "uint256" },
+                    { name: "locked", type: "bool" },
+                    { name: "active", type: "bool" }
+                ]
+            }
+        ]
+    },
+    {
+        name: "calculateRewardFor",
+        type: "function",
+        stateMutability: "view",
+        inputs: [
+            { name: "user", type: "address" },
+            { name: "stakeId", type: "uint256" }
+        ],
+        outputs: [
+            { name: "", type: "uint256" }
+        ]
+    },
+    {
+        name: "totalStakedByUser",
+        type: "function",
+        stateMutability: "view",
+        inputs: [
+            { name: "user", type: "address" }
+        ],
+        outputs: [
+            { name: "", type: "uint256" }
+        ]
+    }
+];
+
+/* Load World MiniKit */
+(async function initWAQFMiniKit() {
+    try {
+        const { MiniKit } = await import(
+            "https://cdn.jsdelivr.net/npm/@worldcoin/minikit-js@2.0.3/+esm"
+        );
+
+        window.WAQF_MiniKit = MiniKit;
+
+        console.log(
+            "WAQF MiniKit loaded:",
+            MiniKit.isInstalled()
+        );
+
+    } catch (error) {
+        console.error(
+            "WAQF MiniKit failed to load:",
+            error
+        );
+    }
+})();
+/* =====================================================
+   WAQF STAKING V3.2 - STAKING FUNCTIONS
+   World Chain 480
+   ===================================================== */
+
+const WAQF_TOKEN_ADDRESS =
+    "0x0983e2b886a0ae277243f099d62b7688733646af";
+
+const WAQF_RPC =
+    "https://worldchain-mainnet.g.alchemy.com/public";
+
+const WAQF_DECIMALS = 18;
+
+const WAQF_TOKEN_ABI = [
+    {
+        name: "approve",
+        type: "function",
+        stateMutability: "nonpayable",
+        inputs: [
+            { name: "spender", type: "address" },
+            { name: "amount", type: "uint256" }
+        ],
+        outputs: [
+            { name: "", type: "bool" }
+        ]
+    }
+];
+
+/* -----------------------------------------------------
+   VIEM
+----------------------------------------------------- */
+
+let WAQF_VIEM = null;
+let WAQF_PUBLIC_CLIENT = null;
+
+async function waqfLoadViem() {
+
+    if (WAQF_PUBLIC_CLIENT) {
+        return WAQF_PUBLIC_CLIENT;
+    }
+
+    try {
+
+        const viem = await import(
+            "https://cdn.jsdelivr.net/npm/viem@2.37.4/+esm"
+        );
+
+        WAQF_VIEM = viem;
+
+        WAQF_PUBLIC_CLIENT =
+            viem.createPublicClient({
+                chain: {
+                    id: 480,
+                    name: "World Chain",
+                    nativeCurrency: {
+                        name: "Ether",
+                        symbol: "ETH",
+                        decimals: 18
+                    },
+                    rpcUrls: {
+                        default: {
+                            http: [WAQF_RPC]
+                        }
+                    }
+                },
+                transport: viem.http(WAQF_RPC)
+            });
+
+        return WAQF_PUBLIC_CLIENT;
+
+    } catch (error) {
+
+        console.error(
+            "WAQF Viem failed to load:",
+            error
+        );
+
+        throw error;
+    }
+}
+
+
+/* -----------------------------------------------------
+   STATUS MESSAGE
+----------------------------------------------------- */
+
+function waqfSetStatus(message, type = "info") {
+
+    const box =
+        document.getElementById("waqfStakingStatus");
+
+    if (!box) return;
+
+    box.style.display = "block";
+
+    box.style.background =
+        type === "error"
+            ? "rgba(255,70,70,.12)"
+            : type === "success"
+                ? "rgba(53,232,121,.12)"
+                : "rgba(255,255,255,.06)";
+
+    box.style.border =
+        type === "error"
+            ? "1px solid rgba(255,70,70,.3)"
+            : type === "success"
+                ? "1px solid rgba(53,232,121,.3)"
+                : "1px solid rgba(255,255,255,.1)";
+
+    box.textContent = message;
+}
+
+
+/* -----------------------------------------------------
+   GET WORLD WALLET
+----------------------------------------------------- */
+
+function waqfGetWalletAddress() {
+
+    const miniKit =
+        window.WAQF_MiniKit;
+
+    if (!miniKit) {
+        return null;
+    }
+
+    return (
+        miniKit.user &&
+        miniKit.user.walletAddress
+    ) || null;
+}
+
+
+/* -----------------------------------------------------
+   FORMAT WAQF
+----------------------------------------------------- */
+
+function waqfFormatAmount(value) {
+
+    try {
+
+        const client =
+            WAQF_VIEM;
+
+        if (!client) {
+            return "0";
+        }
+
+        const number =
+            Number(
+                client.formatUnits(
+                    BigInt(value),
+                    WAQF_DECIMALS
+                )
+            );
+
+        if (!Number.isFinite(number)) {
+            return "0";
+        }
+
+        return number.toLocaleString(
+            undefined,
+            {
+                maximumFractionDigits: 6
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Format WAQF error:",
+            error
+        );
+
+        return "0";
+    }
+}
+
+
+/* -----------------------------------------------------
+   GET STAKE DATA
+----------------------------------------------------- */
+
+async function waqfGetStake(
+    wallet,
+    stakeId
+) {
+
+    const client =
+        await waqfLoadViem();
+
+    return await client.readContract({
+
+        address:
+            WAQF_STAKING_CONTRACT,
+
+        abi:
+            WAQF_STAKING_ABI,
+
+        functionName:
+            "getStake",
+
+        args: [
+            wallet,
+            BigInt(stakeId)
+        ]
+    });
+}
+
+
+/* -----------------------------------------------------
+   LOAD USER STAKES
+----------------------------------------------------- */
+
+async function waqfLoadStaking() {
+
+    try {
+
+        await waqfLoadViem();
+
+        const wallet =
+            waqfGetWalletAddress();
+
+        if (!wallet) {
+
+            const list =
+                document.getElementById(
+                    "waqfStakeList"
+                );
+
+            if (list) {
+
+                list.innerHTML = `
+                    <div style="
+                        padding:14px;
+                        opacity:.65;
+                        text-align:center;
+                    ">
+                        Open this Mini App in World App
+                        to view your WAQF stakes.
+                    </div>
+                `;
+            }
+
+            return;
+        }
+
+        const client =
+            WAQF_PUBLIC_CLIENT;
+
+        const count =
+            await client.readContract({
+
+                address:
+                    WAQF_STAKING_CONTRACT,
+
+                abi:
+                    WAQF_STAKING_ABI,
+
+                functionName:
+                    "stakeCount",
+
+                args: [wallet]
+            });
+
+        const stakeCount =
+            Number(count);
+
+        let total =
+            0n;
+
+        let flexible =
+            0n;
+
+        let locked =
+            0n;
+
+        let pending =
+            0n;
+
+        const stakes = [];
+
+        for (
+            let i = 0;
+            i < stakeCount;
+            i++
+        ) {
+
+            const stake =
+                await waqfGetStake(
+                    wallet,
+                    i
+                );
+
+            const amount =
+                stake.amount !== undefined
+                    ? stake.amount
+                    : stake[0];
+
+            const startTime =
+                stake.startTime !== undefined
+                    ? stake.startTime
+                    : stake[1];
+
+            const lastClaimTime =
+                stake.lastClaimTime !== undefined
+                    ? stake.lastClaimTime
+                    : stake[2];
+
+            const lockedStake =
+                stake.locked !== undefined
+                    ? stake.locked
+                    : stake[3];
+
+            const active =
+                stake.active !== undefined
+                    ? stake.active
+                    : stake[4];
+
+            if (!active) {
+                continue;
+            }
+
+            const reward =
+                await client.readContract({
+
+                    address:
+                        WAQF_STAKING_CONTRACT,
+
+                    abi:
+                        WAQF_STAKING_ABI,
+
+                    functionName:
+                        "calculateRewardFor",
+
+                    args: [
+                        wallet,
+                        BigInt(i)
+                    ]
+                });
+
+            total += BigInt(amount);
+            pending += BigInt(reward);
+
+            if (lockedStake) {
+                locked += BigInt(amount);
+            } else {
+                flexible += BigInt(amount);
+            }
+
+            stakes.push({
+
+                id: i,
+
+                amount:
+                    BigInt(amount),
+
+                reward:
+                    BigInt(reward),
+
+                startTime:
+                    Number(startTime),
+
+                lastClaimTime:
+                    Number(lastClaimTime),
+
+                locked:
+                    Boolean(lockedStake),
+
+                active:
+                    Boolean(active)
+            });
+        }
+
+
+        /* UPDATE SUMMARY */
+
+        const totalElement =
+            document.getElementById(
+                "waqfTotalStaked"
+            );
+
+        const flexibleElement =
+            document.getElementById(
+                "waqfFlexibleStaked"
+            );
+
+        const lockedElement =
+            document.getElementById(
+                "waqfLockedStaked"
+            );
+
+        const rewardElement =
+            document.getElementById(
+                "waqfPendingReward"
+            );
+
+        if (totalElement) {
+            totalElement.textContent =
+                `${waqfFormatAmount(total)} WAQF`;
+        }
+
+        if (flexibleElement) {
+            flexibleElement.textContent =
+                `${waqfFormatAmount(flexible)} WAQF`;
+        }
+
+        if (lockedElement) {
+            lockedElement.textContent =
+                `${waqfFormatAmount(locked)} WAQF`;
+        }
+
+        if (rewardElement) {
+            rewardElement.textContent =
+                `${waqfFormatAmount(pending)} WAQF`;
+        }
+
+
+        /* RENDER STAKES */
+
+        const list =
+            document.getElementById(
+                "waqfStakeList"
+            );
+
+        if (!list) return;
+
+        if (stakes.length === 0) {
+
+            list.innerHTML = `
+                <div style="
+                    padding:14px;
+                    opacity:.65;
+                    text-align:center;
+                ">
+                    No active stakes yet.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        list.innerHTML =
+            stakes.map(
+                stake =>
+                    waqfRenderStake(
+                        stake
+                    )
+            ).join("");
+
+
+    } catch (error) {
+
+        console.error(
+            "WAQF staking load error:",
+            error
+        );
+
+        waqfSetStatus(
+            "Unable to load staking data.",
+            "error"
+        );
+    }
+}
+
+
+/* -----------------------------------------------------
+   RENDER STAKE
+----------------------------------------------------- */
+
+function waqfRenderStake(stake) {
+
+    const lockDuration =
+        60 * 24 * 60 * 60;
+
+    const now =
+        Math.floor(
+            Date.now() / 1000
+        );
+
+    const unlockTime =
+        stake.startTime +
+        lockDuration;
+
+    const locked =
+        stake.locked;
+
+    const matured =
+        !locked ||
+        now >= unlockTime;
+
+    let statusText =
+        locked
+            ? matured
+                ? "LOCKED · MATURED"
+                : "LOCKED · 60 DAYS"
+            : "FLEXIBLE · NO LOCK";
+
+    let withdrawDisabled =
+        !matured;
+
+    let remainingText = "";
+
+    if (
+        locked &&
+        !matured
+    ) {
+
+        const remaining =
+            unlockTime - now;
+
+        const days =
+            Math.floor(
+                remaining / 86400
+            );
+
+        const hours =
+            Math.floor(
+                (remaining % 86400) / 3600
+            );
+
+        remainingText =
+            `${days}d ${hours}h remaining`;
+    }
+
+
+    return `
+        <div style="
+            margin-bottom:12px;
+            padding:15px;
+            border-radius:14px;
+            background:rgba(255,255,255,.04);
+            border:1px solid rgba(255,255,255,.08);
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                gap:10px;
+                margin-bottom:8px;
+            ">
+
+                <strong>
+                    Stake #${stake.id}
+                </strong>
+
+                <span style="
+                    font-size:12px;
+                    opacity:.7;
+                ">
+                    ${statusText}
+                </span>
+
+            </div>
+
+            <div style="
+                font-size:20px;
+                font-weight:700;
+                margin-bottom:6px;
+            ">
+                ${waqfFormatAmount(
+                    stake.amount
+                )} WAQF
+            </div>
+
+            <div style="
+                font-size:13px;
+                opacity:.7;
+                margin-bottom:12px;
+            ">
+                Pending reward:
+                ${waqfFormatAmount(
+                    stake.reward
+                )} WAQF
+                ${
+                    remainingText
+                        ? `<br>${remainingText}`
+                        : ""
+                }
+            </div>
+
+            <div style="
+                display:grid;
+                grid-template-columns:repeat(2,minmax(0,1fr));
+                gap:8px;
+            ">
+
+                <button
+                    type="button"
+                    class="button gold"
+                    onclick="waqfClaimReward(${stake.id})"
+                    ${
+                        stake.reward <
+                        1000000000000000000n
+                            ? "disabled"
+                            : ""
+                    }
+                    style="
+                        opacity:${
+                            stake.reward <
+                            1000000000000000000n
+                                ? ".45"
+                                : "1"
+                        };
+                    "
+                >
+                    CLAIM
+                </button>
+
+                <button
+                    type="button"
+                    class="button gold"
+                    onclick="waqfWithdraw(${stake.id})"
+                    ${
+                        withdrawDisabled
+                            ? "disabled"
+                            : ""
+                    }
+                    style="
+                        opacity:${
+                            withdrawDisabled
+                                ? ".45"
+                                : "1"
+                        };
+                    "
+                >
+                    WITHDRAW
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* -----------------------------------------------------
+   VALIDATE AMOUNT
+----------------------------------------------------- */
+
+async function waqfGetStakeAmount() {
+
+    const input =
+        document.getElementById(
+            "waqfStakeAmount"
+        );
+
+    if (!input) {
+        throw new Error(
+            "Stake amount field not found."
+        );
+    }
+
+    const value =
+        input.value.trim();
+
+    if (!value) {
+        throw new Error(
+            "Please enter a WAQF amount."
+        );
+    }
+
+    if (
+        !WAQF_VIEM
+    ) {
+        await waqfLoadViem();
+    }
+
+    const amount =
+        WAQF_VIEM.parseUnits(
+            value,
+            WAQF_DECIMALS
+        );
+
+    if (amount <= 0n) {
+        throw new Error(
+            "WAQF amount must be greater than zero."
+        );
+    }
+
+    return amount;
+}
+
+
+/* -----------------------------------------------------
+   SEND STAKE
+----------------------------------------------------- */
+
+async function waqfSendStake(
+    amount,
+    locked
+) {
+
+    const miniKit =
+        window.WAQF_MiniKit;
+
+    if (!miniKit) {
+
+        throw new Error(
+            "World MiniKit is not available."
+        );
+    }
+
+    if (
+        !miniKit.isInstalled()
+    ) {
+
+        throw new Error(
+            "Please open WAQF inside World App."
+        );
+    }
+
+
+    const encode =
+        WAQF_VIEM.encodeFunctionData;
+
+
+    const approveData =
+        encode({
+
+            abi:
+                WAQF_TOKEN_ABI,
+
+            functionName:
+                "approve",
+
+            args: [
+                WAQF_STAKING_CONTRACT,
+                amount
+            ]
+        });
+
+
+    const stakeData =
+        encode({
+
+            abi:
+                WAQF_STAKING_ABI,
+
+            functionName:
+                locked
+                    ? "stakeLocked"
+                    : "stakeFlexible",
+
+            args: [
+                amount
+            ]
+        });
+
+
+    const result =
+        await miniKit.sendTransaction({
+
+            chainId: 480,
+
+            transactions: [
+
+                {
+                    to:
+                        WAQF_TOKEN_ADDRESS,
+
+                    data:
+                        approveData
+                },
+
+                {
+                    to:
+                        WAQF_STAKING_CONTRACT,
+
+                    data:
+                        stakeData
+                }
+
+            ]
+        });
+
+
+    return result;
+}
+
+
+/* -----------------------------------------------------
+   STAKE FLEXIBLE
+----------------------------------------------------- */
+
+async function waqfStakeFlexible() {
+
+    const button =
+        document.getElementById(
+            "stakeFlexibleBtn"
+        );
+
+    try {
+
+        if (button) {
+            button.disabled = true;
+        }
+
+        waqfSetStatus(
+            "Preparing Flexible staking..."
+        );
+
+        const amount =
+            await waqfGetStakeAmount();
+
+        waqfSetStatus(
+            "Confirm the transaction in World App..."
+        );
+
+        const result =
+            await waqfSendStake(
+                amount,
+                false
+            );
+
+        console.log(
+            "Flexible stake result:",
+            result
+        );
+
+        waqfSetStatus(
+            "Flexible staking submitted successfully.",
+            "success"
+        );
+
+        const input =
+            document.getElementById(
+                "waqfStakeAmount"
+            );
+
+        if (input) {
+            input.value = "";
+        }
+
+        setTimeout(
+            waqfLoadStaking,
+            5000
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Flexible staking error:",
+            error
+        );
+
+        waqfSetStatus(
+            error.message ||
+            "Flexible staking failed.",
+            "error"
+        );
+
+    } finally {
+
+        if (button) {
+            button.disabled = false;
+        }
+    }
+}
+
+
+/* -----------------------------------------------------
+   STAKE LOCKED
+----------------------------------------------------- */
+
+async function waqfStakeLocked() {
+
+    const button =
+        document.getElementById(
+            "stakeLockedBtn"
+        );
+
+    try {
+
+        if (button) {
+            button.disabled = true;
+        }
+
+        waqfSetStatus(
+            "Preparing Locked staking..."
+        );
+
+        const amount =
+            await waqfGetStakeAmount();
+
+        waqfSetStatus(
+            "Confirm the transaction in World App..."
+        );
+
+        const result =
+            await waqfSendStake(
+                amount,
+                true
+            );
+
+        console.log(
+            "Locked stake result:",
+            result
+        );
+
+        waqfSetStatus(
+            "Locked staking submitted successfully.",
+            "success"
+        );
+
+        const input =
+            document.getElementById(
+                "waqfStakeAmount"
+            );
+
+        if (input) {
+            input.value = "";
+        }
+
+        setTimeout(
+            waqfLoadStaking,
+            5000
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Locked staking error:",
+            error
+        );
+
+        waqfSetStatus(
+            error.message ||
+            "Locked staking failed.",
+            "error"
+        );
+
+    } finally {
+
+        if (button) {
+            button.disabled = false;
+        }
+    }
+}
+
+
+/* -----------------------------------------------------
+   CLAIM REWARD
+----------------------------------------------------- */
+
+async function waqfClaimReward(
+    stakeId
+) {
+
+    try {
+
+        const miniKit =
+            window.WAQF_MiniKit;
+
+        if (
+            !miniKit ||
+            !miniKit.isInstalled()
+        ) {
+
+            throw new Error(
+                "Please open WAQF inside World App."
+            );
+        }
+
+        const client =
+            await waqfLoadViem();
+
+        const wallet =
+            waqfGetWalletAddress();
+
+        if (!wallet) {
+
+            throw new Error(
+                "World wallet not detected."
+            );
+        }
+
+
+        const reward =
+            await client.readContract({
+
+                address:
+                    WAQF_STAKING_CONTRACT,
+
+                abi:
+                    WAQF_STAKING_ABI,
+
+                functionName:
+                    "calculateRewardFor",
+
+                args: [
+                    wallet,
+                    BigInt(stakeId)
+                ]
+            });
+
+
+        /* Minimum UX threshold:
+           1 WAQF */
+
+        if (
+            BigInt(reward) <
+            1000000000000000000n
+        ) {
+
+            throw new Error(
+                "Reward is below 1 WAQF. Please wait for it to accumulate."
+            );
+        }
+
+
+        const data =
+            WAQF_VIEM.encodeFunctionData({
+
+                abi:
+                    WAQF_STAKING_ABI,
+
+                functionName:
+                    "claimReward",
+
+                args: [
+                    BigInt(stakeId)
+                ]
+            });
+
+
+        waqfSetStatus(
+            "Confirm reward claim in World App..."
+        );
+
+
+        const result =
+            await miniKit.sendTransaction({
+
+                chainId: 480,
+
+                transactions: [
+
+                    {
+                        to:
+                            WAQF_STAKING_CONTRACT,
+
+                        data
+                    }
+
+                ]
+            });
+
+
+        console.log(
+            "Claim result:",
+            result
+        );
+
+
+        waqfSetStatus(
+            "Reward claim submitted successfully.",
+            "success"
+        );
+
+
+        setTimeout(
+            waqfLoadStaking,
+            5000
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Claim reward error:",
+            error
+        );
+
+        waqfSetStatus(
+            error.message ||
+            "Reward claim failed.",
+            "error"
+        );
+    }
+}
+
+
+/* -----------------------------------------------------
+   WITHDRAW
+----------------------------------------------------- */
+
+async function waqfWithdraw(
+    stakeId
+) {
+
+    try {
+
+        const miniKit =
+            window.WAQF_MiniKit;
+
+        if (
+            !miniKit ||
+            !miniKit.isInstalled()
+        ) {
+
+            throw new Error(
+                "Please open WAQF inside World App."
+            );
+        }
+
+
+        const client =
+            await waqfLoadViem();
+
+        const wallet =
+            waqfGetWalletAddress();
+
+        if (!wallet) {
+
+            throw new Error(
+                "World wallet not detected."
+            );
+        }
+
+
+        const stake =
+            await waqfGetStake(
+                wallet,
+                stakeId
+            );
+
+
+        const locked =
+            stake.locked !== undefined
+                ? stake.locked
+                : stake[3];
+
+        const startTime =
+            stake.startTime !== undefined
+                ? stake.startTime
+                : stake[1];
+
+
+        if (
+            locked &&
+            Math.floor(Date.now() / 1000) <
+            Number(startTime) +
+            60 * 24 * 60 * 60
+        ) {
+
+            throw new Error(
+                "This locked stake has not reached 60 days yet."
+            );
+        }
+
+
+        const data =
+            WAQF_VIEM.encodeFunctionData({
+
+                abi:
+                    WAQF_STAKING_ABI,
+
+                functionName:
+                    "withdraw",
+
+                args: [
+                    BigInt(stakeId)
+                ]
+            });
+
+
+        waqfSetStatus(
+            "Confirm withdrawal in World App..."
+        );
+
+
+        const result =
+            await miniKit.sendTransaction({
+
+                chainId: 480,
+
+                transactions: [
+
+                    {
+                        to:
+                            WAQF_STAKING_CONTRACT,
+
+                        data
+                    }
+
+                ]
+            });
+
+
+        console.log(
+            "Withdraw result:",
+            result
+        );
+
+
+        waqfSetStatus(
+            "Withdrawal submitted successfully.",
+            "success"
+        );
+
+
+        setTimeout(
+            waqfLoadStaking,
+            5000
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Withdraw error:",
+            error
+        );
+
+        waqfSetStatus(
+            error.message ||
+            "Withdrawal failed.",
+            "error"
+        );
+    }
+}
+
+
+/* -----------------------------------------------------
+   INITIALISE STAKING DATA
+----------------------------------------------------- */
+
+window.addEventListener(
+    "load",
+    async function () {
+
+        try {
+
+            await waqfLoadViem();
+
+            setTimeout(
+                waqfLoadStaking,
+                1500
+            );
+
+        } catch (error) {
+
+            console.error(
+                "WAQF staking initialization error:",
+                error
+            );
+        }
+    }
+);
 </script>
 
 
